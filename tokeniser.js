@@ -1,24 +1,20 @@
 (function () {
   "use strict"
 
+  var replaceStream = require('replacestream')
+  var fs = require('fs')
+  var path = require('path')
+
+
   module.exports = {
 
-
-    tokenise: function(config, src_file, dest_file, callback) {
+    tokenise: function(args, callback) {
 
       var err
 
-      var c = require('./config')
-
-console.log(c)
-
-/*
-  process. src_file
-  .pipe(parser)
-  .pipe(dest_file)
-*/
-
-
+      fs.createReadStream(args.src_file)
+        .pipe(replaceStream(args.search, args.replace))
+        .pipe(fs.createWriteStream(args.dst_file))
 
       callback(err)
 

@@ -24,10 +24,10 @@
 
       var tokeniser_config = 'config.json'
       var src_file = 'src_html.html'
-      var dest_file = 'dest_html.html'
-      var check_file = 'check_html.html'
+      var dst_file = 'dst_html.html'
+      var chk_file = 'chk_html.html'
 
-      //fs.unlinkSync(dest_file)
+      //fs.unlinkSync(dst_file)
 
 
       it('check src file exists: '+src_file, function (done) {
@@ -40,10 +40,10 @@
       })
 
 
-      it('check check file exists: '+check_file, function (done) {
+      it('check chk file exists: '+chk_file, function (done) {
 
-        fs.stat(check_file, function(err, stat) {
-          assert.ok(!err, "files test " + check_file)
+        fs.stat(chk_file, function(err, stat) {
+          assert.ok(!err, "files test " + chk_file)
           done()
         })
 
@@ -52,7 +52,14 @@
 
       it('run the tokeniser: ', function (done) {
 
-        tokeniser.tokenise(tokeniser_config, src_file, dest_file, function (err) {
+        var config = {
+          search: "FOO",
+          replace: "BAR",
+          src_file: src_file,
+          dst_file: dst_file,
+        }
+
+        tokeniser.tokenise(config, function (err) {
           assert.ok(!err, "tokeniser")
           done()
         })
@@ -60,9 +67,9 @@
       })
 
 
-      it('diff dest and check file', function (done) {
+      it('diff dst and chk file', function (done) {
 
-        compare.compare(dest_file, check_file, function(result) {
+        compare.compare(dst_file, chk_file, function(result) {
           assert.ok(result, "compare")
           done()
         })
@@ -70,10 +77,10 @@
       })
 
 
-      it('check dest file exists: '+dest_file, function (done) {
+      it('chk dst file exists: '+dst_file, function (done) {
 
-        fs.stat(dest_file, function(err, stat) {
-          assert.ok(!err, "files test " + dest_file)
+        fs.stat(dst_file, function(err, stat) {
+          assert.ok(!err, "files test " + dst_file)
           done()
         })
 
