@@ -39,7 +39,9 @@
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-watch": "^0.6.1",
     "mocha": "^2.3.4",
-    "pre-git": "^1.2.11",
+    "pre-git": "^1.2.11"
+  },
+  "dependencies": {
     "replacestream": "^4.0.0"
   }
 }
