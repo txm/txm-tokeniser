@@ -12,11 +12,13 @@
 
       var err
 
-      fs.createReadStream(args.src_file)
+      var stream = fs.createReadStream(args.src_file)
         .pipe(replaceStream(args.search, args.replace))
         .pipe(fs.createWriteStream(args.dst_file))
 
-      callback(err)
+      stream.on('close', function(err) {
+        callback(err)
+      })
 
     }
 
