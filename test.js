@@ -7,7 +7,7 @@
   var expect = require("chai").expect
   var compare = require('file-compare')
 
-  var tokeniser = require('./tokeniser')
+  var tokeniser = require('./index')
 
   describe('tokeniser', function () {
 
@@ -53,8 +53,8 @@
       it('run the tokeniser: ', function (done) {
 
         var config = {
-          search: "FOO",
-          replace: "BAR",
+          search: "%%FOO%%",
+          replace: "bar",
           src_file: src_file,
           dst_file: dst_file,
         }
