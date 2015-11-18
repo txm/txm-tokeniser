@@ -22,12 +22,10 @@
     describe('tokenise input', function () {
 
 
-      var tokeniser_config = 'config.json'
+      var tokens   = require('./tokens.json')
       var src_file = 'src_html.html'
       var dst_file = 'dst_html.html'
       var chk_file = 'chk_html.html'
-
-      //fs.unlinkSync(dst_file)
 
 
       it('check src file exists: '+src_file, function (done) {
@@ -53,8 +51,7 @@
       it('run the tokeniser: ', function (done) {
 
         var config = {
-          search: "%%FOO%%",
-          replace: "bar",
+          tokens:   tokens,
           src_file: src_file,
           dst_file: dst_file,
         }

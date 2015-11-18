@@ -1,7 +1,7 @@
 {
   "name": "@txm/tokeniser",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.1.0",
+  "description": "search and replace tokens from a source file, writing to a new file",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -42,6 +42,7 @@
     "pre-git": "^1.2.11"
   },
   "dependencies": {
-    "replacestream": "^4.0.0"
+    "replacestream": "^4.0.0",
+    "stream-combiner2": "^1.1.1"
   }
 }
